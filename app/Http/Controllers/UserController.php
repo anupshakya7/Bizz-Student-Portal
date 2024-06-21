@@ -44,11 +44,24 @@ class UserController extends Controller
         ]);
 
         if(Auth::attempt($validation)) {
-            return redirect()->route('dashboard')->with('login', 'User Login Successfully!!!');
+            $request->session()->regenerate();
+            if(Auth::check()){
+                return redirect()->route('dashboard')->with('login', 'User Login Successfully!!!');
+            }else{
+                return redirect()->route('login')->with('error', 'User authentication failed.');
+            }
+            
         } else {
-            return redirect()->route('login')->with('error', 'User Not Found !!!');
+            return redirect()->route('login')->with('error', 'Invalid Credentials, Please try again.');
         }
     }
     //Login End
+
+    //Logout Start
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with('success','Logout Successfully!!!');
+    }
+    //Logout End
 
 }

@@ -9,19 +9,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        if(Auth::check()) {
-            return view('user.dashboard');
-        } else {
-            return redirect()->route('login');
-        }
+        return view('user.dashboard');
     }
 
     public function about()
     {
-        if(Auth::check()) {
-            return view('user.about');
-        } else {
-            return redirect()->route('login');
-        }
+        return view('user.about');
     }
 }

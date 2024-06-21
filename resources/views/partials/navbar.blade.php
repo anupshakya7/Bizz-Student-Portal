@@ -38,7 +38,7 @@
             <form class="d-flex" role="search">
                 @if(auth()->check())
                 <p class="mt-2 me-2">Welcome, <b>{{auth()->user()->name}}</b> </p>
-                <a href="{{Auth::logout()}}" class="btn btn-outline-danger mx-1" type="button">Logout</a>
+                <a href="{{route('logout')}}" class="btn btn-outline-danger mx-1 mt-1" type="button">Logout</a>
                 @else
                 <a href="{{route('login')}}" class="btn btn-outline-success mx-1" type="button">Login</a>
                 <a href="{{route('register')}}" class="btn btn-outline-danger mx-1" type="button">Register</a>
